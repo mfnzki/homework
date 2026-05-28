@@ -1,0 +1,15 @@
+services:
+  web:
+    build: ./app
+    ports:
+      - "8098:8098"
+
+  nginx:
+    image: mirror.gcr.io/library/nginx:latest
+    ports:
+      - "80:80"
+
+  client:
+    build: ./client
+    depends_on:
+      - web
